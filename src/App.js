@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import './App.css';
 import { MainPage } from './components/MainPage';
 import { TodoPage } from './components/TodoPage';
-import { selectView } from './redux/MainViewReducer';
-import { selectStorage } from './redux/myStorage';
+import { selectStorage, selectView } from './redux/MainViewReducer';
+
 
 
 

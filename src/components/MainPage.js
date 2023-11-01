@@ -1,7 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectStorage } from '../redux/myStorage'
-import { TodoCreate, TodoRead, } from '../redux/MainViewReducer'
+import { TodoCreate, TodoRead, selectStorage, } from '../redux/MainViewReducer'
 
 
 export const MainPage = (props) => {
