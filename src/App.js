@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+
+import { useSelector } from 'react-redux';
 import './App.css';
+import { MainPage } from './components/MainPage';
+import { TodoPage } from './components/TodoPage';
+import { selectView } from './redux/MainViewReducer';
+import { selectStorage } from './redux/myStorage';
+
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  let mainState = useSelector(selectView)
+  let elementsInStorage = useSelector(selectStorage)
+
+
+  if (mainState.create === true || mainState.readTodo != null) {
+    return (
+      <div className="App">
+        <TodoPage create={true} />
+      </div>
+    )
+  } else {
+    return (
+      <div className="App">
+        <MainPage elementsInStorage={elementsInStorage} />
+      </div>
+    )
+  }
 }
+
+
 
 export default App;
