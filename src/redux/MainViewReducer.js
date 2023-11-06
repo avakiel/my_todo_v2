@@ -6,7 +6,15 @@ export const MainViewSlice = createSlice({
     initialState: {
         create: false,
         readTodo: null,
-        storage: [['hi', 'hello'], ['second todo'], ['third todo']]
+        storage: [
+            {
+                'hi': false,
+                'hello': false,
+            }, {
+                'secound': false,
+                'todo': false
+            }, { 'third todo': false }
+        ]
     },
     reducers: {
         TodoCreate: (state, data) => {
@@ -15,13 +23,22 @@ export const MainViewSlice = createSlice({
         TodoRead: (state, data) => {
             state.readTodo = data.payload
         },
-        StorageAdd: (state, data) => {
-            state.storage[state.readTodo].push(data.payload)
+        StorageAdd: (state, action) => {
+            const index = state.readTodo;
+            const key = action.payload.key;
+
+            state.storage[index][key] = action.payload.value;
+        },
+        StorageNewTodo: (state) => {
+            state.storage.push({});
+        },
+        StorageCleanEmptyTodo: (state) => {
+            state.storage.pop();
         }
     },
 })
 
-export const { TodoCreate, TodoRead, StorageAdd} = MainViewSlice.actions
+export const { TodoCreate, TodoRead, StorageAdd, StorageNewTodo, StorageCleanEmptyTodo } = MainViewSlice.actions
 
 export const selectView = state => state.main
 export const selectTodo = state => state.main.readTodo

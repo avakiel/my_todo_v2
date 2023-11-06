@@ -18,7 +18,7 @@ function App() {
   if (mainState.create === true || mainState.readTodo != null) {
     return (
       <div className="App">
-        <TodoPage create={true} />
+        <TodoPage />
       </div>
     )
   } else {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { TodoCreate, TodoRead, selectStorage, } from '../redux/MainViewReducer'
+import { StorageNewTodo, TodoCreate, TodoRead, selectStorage, } from '../redux/MainViewReducer'
 
 
 export const MainPage = (props) => {
@@ -16,12 +16,14 @@ export const MainPage = (props) => {
 
     function createTodo() {
         dispatch(TodoCreate(true))
+        dispatch(StorageNewTodo())
+        dispatch(TodoRead(elementsInStorage.length))
     }
 
 
     return (
         <div className='mainPage'>
-            {elementsInStorage.map((e, i) => <div onClick={pickTodo} id={i} className='listOfElements' key={i}>{e[0]}</div>)}
+            {elementsInStorage.map((e, i) => <div onClick={pickTodo} id={i} className='listOfElements' key={i}>{Object.keys(e)[0]}</div>)}
             <button onClick={createTodo}>Create Todo</button>
         </div>
     )

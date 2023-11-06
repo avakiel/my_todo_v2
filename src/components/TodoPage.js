@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { StorageAdd, TodoCreate, TodoRead, selectStorage, selectTodo} from '../redux/MainViewReducer'
+import { StorageAdd, StorageCleanEmptyTodo, TodoCreate, TodoRead, selectStorage, selectTodo } from '../redux/MainViewReducer'
 
 
 export const TodoPage = (props) => {
@@ -10,30 +10,25 @@ export const TodoPage = (props) => {
   let pickedTodo = useSelector(selectTodo)
 
 
-
-
-
-  let presentTodo = elementsInStorage[pickedTodo] || []
-
-  let tempTodo = []
+  let presentTodo = elementsInStorage[pickedTodo] || {}
 
 
   function exitTodo() {
-    dispatch(TodoCreate(false))
-    dispatch(TodoRead(null))
+    if (Object.keys(presentTodo).length === 0) {
+      dispatch(StorageCleanEmptyTodo());
+    }
+    dispatch(TodoCreate(false));
+    dispatch(TodoRead(null));
   }
 
   function addTodo() {
-    let inputValue = document.querySelector('input').value
+    const inputValue = document.querySelector('input').value;
 
     if (inputValue !== '') {
-      if (pickedTodo) {
-        dispatch(StorageAdd(inputValue))
-      }
+      dispatch(StorageAdd({ key: inputValue, value: false }));
     }
-    document.querySelector('input').value = ''
-
-    console.log(tempTodo)
+    document.querySelector('input').value = '';
+    console.log(elementsInStorage)
   }
 
 
@@ -41,7 +36,7 @@ export const TodoPage = (props) => {
   return (
     <>
       <div>
-        {presentTodo.map((e, i) => <li key={i}>{e}</li>)}
+        {Object.keys(presentTodo).map((e,i)=> <li key={i}>{e}</li>)}
       </div>
       <div>
         <input type="text" />
