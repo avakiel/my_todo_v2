@@ -9,7 +9,7 @@ export const MainViewSlice = createSlice({
         storage: [
             {
                 'hi': false,
-                'hello': false,
+                'hello': true,
             }, {
                 'secound': false,
                 'todo': false

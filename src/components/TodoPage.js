@@ -12,6 +12,8 @@ export const TodoPage = (props) => {
 
   let presentTodo = elementsInStorage[pickedTodo] || {}
 
+  
+
 
   function exitTodo() {
     if (Object.keys(presentTodo).length === 0) {
@@ -28,15 +30,21 @@ export const TodoPage = (props) => {
       dispatch(StorageAdd({ key: inputValue, value: false }));
     }
     document.querySelector('input').value = '';
-    console.log(elementsInStorage)
   }
 
+  function doneTodo() {
+
+  }
+
+  function deleteTodo() {
+
+  }
 
 
   return (
     <>
       <div>
-        {Object.keys(presentTodo).map((e,i)=> <li key={i}>{e}</li>)}
+        {Object.keys(presentTodo).map((e,i)=> <li key={i}>{e}<button onClick={doneTodo}>Done</button><button onClick={deleteTodo}>Delete</button></li>)}
       </div>
       <div>
         <input type="text" />
