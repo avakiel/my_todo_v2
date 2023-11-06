@@ -12,7 +12,7 @@ export const TodoPage = (props) => {
 
   let presentTodo = elementsInStorage[pickedTodo] || {}
 
-  
+
 
 
   function exitTodo() {
@@ -32,11 +32,11 @@ export const TodoPage = (props) => {
     document.querySelector('input').value = '';
   }
 
-  function doneTodo() {
-
+  function doneTodo(target) {
+    
   }
 
-  function deleteTodo() {
+  function deleteTodo(target) {
 
   }
 
@@ -44,7 +44,11 @@ export const TodoPage = (props) => {
   return (
     <>
       <div>
-        {Object.keys(presentTodo).map((e,i)=> <li key={i}>{e}<button onClick={doneTodo}>Done</button><button onClick={deleteTodo}>Delete</button></li>)}
+        {Object.keys(presentTodo).map((e,i)=> <li key={i}>
+          {e}
+        <button onClick={()=> doneTodo(e)}>Done</button>
+        <button onClick={() => deleteTodo(e)}>Delete</button>
+        </li>)}
       </div>
       <div>
         <input type="text" />

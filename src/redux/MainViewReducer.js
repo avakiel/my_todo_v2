@@ -23,22 +23,25 @@ export const MainViewSlice = createSlice({
         TodoRead: (state, data) => {
             state.readTodo = data.payload
         },
-        StorageAdd: (state, action) => {
+        StorageAdd: (state, data) => {
             const index = state.readTodo;
-            const key = action.payload.key;
+            const key = data.payload.key;
 
-            state.storage[index][key] = action.payload.value;
+            state.storage[index][key] = data.payload.value;
         },
         StorageNewTodo: (state) => {
             state.storage.push({});
         },
         StorageCleanEmptyTodo: (state) => {
             state.storage.pop();
+        },
+        doneTodo: (state, data) => {
+           
         }
     },
 })
 
-export const { TodoCreate, TodoRead, StorageAdd, StorageNewTodo, StorageCleanEmptyTodo } = MainViewSlice.actions
+export const { TodoCreate, TodoRead, StorageAdd, StorageNewTodo, StorageCleanEmptyTodo, doneTodo } = MainViewSlice.actions
 
 export const selectView = state => state.main
 export const selectTodo = state => state.main.readTodo
