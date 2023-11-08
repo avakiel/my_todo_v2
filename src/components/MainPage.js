@@ -1,4 +1,5 @@
 import React from 'react'
+import './MainPage.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { StorageNewTodo, TodoCreate, TodoRead, selectStorage, } from '../redux/MainViewReducer'
 

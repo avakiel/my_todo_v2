@@ -1,6 +1,5 @@
-
+import './components/MainPage.css'
 import { useSelector } from 'react-redux';
-import './App.css';
 import { MainPage } from './components/MainPage';
 import { TodoPage } from './components/TodoPage';
 import { selectStorage, selectView } from './redux/MainViewReducer';

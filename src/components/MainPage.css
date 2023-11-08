@@ -1,0 +1,15 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+  font-family: 'Texturina', serif;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  background: url(/images/wp2133123-night-forest-wallpapers.jpg);
+  background-size: contain;
+  color: white;
+}
+
+.App {
+}
