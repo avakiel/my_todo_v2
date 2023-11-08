@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { StorageAdd, StorageCleanEmptyTodo, TodoCreate, TodoRead, selectStorage, selectTodo } from '../redux/MainViewReducer'
+import { StorageAdd, StorageCleanEmptyTodo, TodoCreate, TodoRead, deleteTodo, doneTodo, selectStorage, selectTodo, } from '../redux/MainViewReducer'
+import './TodoPage.css'
 
 
 export const TodoPage = (props) => {
@@ -32,22 +33,26 @@ export const TodoPage = (props) => {
     document.querySelector('input').value = '';
   }
 
-  function doneTodo(target) {
-    
+  function doneTask(target) {
+    dispatch(doneTodo({ pickedTodo, target }));
   }
 
-  function deleteTodo(target) {
-
+  function deleteTask(target) {
+    dispatch(deleteTodo({ pickedTodo, target }));
   }
 
 
   return (
     <>
       <div>
-        {Object.keys(presentTodo).map((e,i)=> <li key={i}>
+        {Object.keys(presentTodo).map((e,i)=> presentTodo[e]? <li className='done' key={i}>
           {e}
-        <button onClick={()=> doneTodo(e)}>Done</button>
-        <button onClick={() => deleteTodo(e)}>Delete</button>
+        <button onClick={()=> doneTask(e)}>Done</button>
+        <button onClick={() => deleteTask(e)}>Delete</button>
+        </li> :  <li key={i}>
+          {e}
+        <button onClick={()=> doneTask(e)}>Done</button>
+        <button onClick={() => deleteTask(e)}>Delete</button>
         </li>)}
       </div>
       <div>
