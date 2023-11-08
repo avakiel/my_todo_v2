@@ -33,7 +33,7 @@ export const MainViewSlice = createSlice({
             state.storage.push({});
         },
         StorageCleanEmptyTodo: (state) => {
-            state.storage.pop();
+            state.storage = state.storage.filter((item) => Object.keys(item).length > 0);
         },
         doneTodo: (state, data) => {
             const index = data.payload.pickedTodo;
