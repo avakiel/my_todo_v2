@@ -43,7 +43,7 @@ export const TodoPage = (props) => {
 
 
   return (
-    <>
+    <div className='TodoMain'>
       <div>
         {Object.keys(presentTodo).map((e,i)=> presentTodo[e]? <li className='done' key={i}>
           {e}
@@ -62,7 +62,7 @@ export const TodoPage = (props) => {
       <div>
         <button onClick={exitTodo}>Exit</button>
       </div>
-    </>
+    </div>
 
   )
 }

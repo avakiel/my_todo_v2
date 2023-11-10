@@ -1,3 +1,9 @@
 .done {
     background-color: greenyellow;
 }
+
+.TodoMain {
+    width: 70%;
+    height: 60%;
+    background-color: antiquewhite;
+}

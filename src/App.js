@@ -16,15 +16,22 @@ function App() {
 
   if (mainState.create === true || mainState.readTodo != null) {
     return (
-      <div className="App">
-        <TodoPage />
-      </div>
+      <>
+        <p className='main_info'>My Todos</p>
+        <div className="App">
+          <TodoPage />
+        </div>
+      </>
     )
   } else {
     return (
-      <div className="App">
-        <MainPage elementsInStorage={elementsInStorage} />
-      </div>
+      <>
+        <p className='main_info'>My Todos</p>
+        <div className="App">
+          <MainPage elementsInStorage={elementsInStorage} />
+        </div>
+      </>
+
     )
   }
 }

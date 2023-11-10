@@ -25,7 +25,7 @@ export const MainPage = (props) => {
     return (
         <div className='mainPage'>
             {elementsInStorage.map((e, i) => <div onClick={pickTodo} id={i} className='listOfElements' key={i}>{Object.keys(e)[0]}</div>)}
-            <button onClick={createTodo}>Create Todo</button>
+            <button className='buttonCreate' onClick={createTodo}>Create Todo</button>
         </div>
     )
 }

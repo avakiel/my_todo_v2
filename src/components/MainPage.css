@@ -1,7 +1,7 @@
 * {
   margin: 0 auto;
   padding: 0;
-  font-family: 'Texturina', serif;
+  font-family: "Texturina", serif;
 }
 body {
   width: 100vw;
@@ -11,5 +11,38 @@ body {
   color: white;
 }
 
+.main_info {
+  position: fixed;
+  left: 45%;
+  top: 5%;
+  font-size: 55px;
+  font-weight: 800;
+}
 .App {
+  width: 70%;
+  height: 100%;
+  padding-top: 8%;
+}
+
+.mainPage {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.listOfElements {
+  margin: 20px 20px;
+  width: 10%; 
+  box-sizing: border-box;
+  height: 100px;
+  background-color: rgb(243, 255, 226);
+  color: black;
+  cursor: pointer;
+}
+
+.buttonCreate {
+  order: 999;
+  width: 10%;
+  height: 100px;
+  margin: 20px 20px;
 }
